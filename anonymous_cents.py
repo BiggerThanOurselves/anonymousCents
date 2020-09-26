@@ -35,7 +35,8 @@ def main(emails):
     planilha_centavos.close()
     planilha_apelidos.close()
 
-    print("Os emails estão sendo enviados para: {}\n" .format(email_apelido))
+    lista_emails = email_apelido.keys()
+    print("Os emails estão sendo enviados para: \n{}\n".format(list(lista_emails)))
     return email_apelido
 
 
