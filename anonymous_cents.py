@@ -1,5 +1,7 @@
 import xlsxwriter
 import random
+import smtplib
+
 
 with open('emails.py', 'r') as e_mails:
     emails_passados = e_mails.read()
@@ -42,3 +44,32 @@ def cria_planilha_emails(nome):
 
 if __name__ == '__main__':
     main(emails)
+
+
+def envia_email(dicionario):
+
+    remetente = 'leandra.silva@ccc.ufcg.edu.br'
+    senha = 'leandrinha1717'
+
+    destinatario = 'rodrigo.cavalcanti@ccc.ufcg.edu.br'
+    subject = 'Apelido centavos LOAC'
+    mensagem = "Seu apelido na planilha centavos.xlsx : "
+
+    email_text = """\
+    remetente: %s
+    destinatario: %s
+    subject: %s
+
+    %s
+    """ % (remetente, ", ".join(destinatario), subject, mensagem)
+
+    try:
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.ehlo()
+    server.login(remetente, senha)
+    server.sendmail(remetente, destinatario, email_text)
+    server.close()
+
+    print ('Email enviado com sucesso!')
+    except:
+    print ('O email não foi enviado')
