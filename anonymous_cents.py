@@ -52,9 +52,9 @@ def cria_planilha_emails(nome):
     return (planilha, pagina_planilha)
 
 
-def envia_email(retorno):
+def envia_email(emails_e_apelidos):
 
-    for dest, apelido in retorno.items():
+    for dest, apelido in emails_e_apelidos.items():
 
         remetente = 'leandra.silva@ccc.ufcg.edu.br'
         senha = 'leandrinha1717'
@@ -77,8 +77,8 @@ def envia_email(retorno):
             server.close()
             print(f'Email enviado com sucesso para: {dest} \n')
         except:
-            print('O email não foi enviado')
+            print(f'O email não foi enviado para: {dest} \n')
 
 if __name__ == '__main__':
-    retorno = main(emails)
-    envia_email(retorno)
+    emails_e_apelidos = main(emails)
+    envia_email(emails_e_apelidos)
