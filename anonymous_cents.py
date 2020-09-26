@@ -14,7 +14,7 @@ def main(emails):
     planilha_apelidos, pagina_planilha_apelidos = cria_planilha_emails(
         'apelidos')
 
-    email_apelido = {}
+    emails_e_apelidos = {}
     random.seed(1098)
     
     raiz_apelido = random.randint(200, 300)
@@ -30,14 +30,14 @@ def main(emails):
         pagina_planilha_centavos.write(linha_email, email)
 
         pagina_planilha_apelidos.write(linha_apelido, apelido)
-        email_apelido[email] = apelido
+        emails_e_apelidos[email] = apelido
 
     planilha_centavos.close()
     planilha_apelidos.close()
 
-    lista_emails = email_apelido.keys()
-    print("Os emails estão sendo enviados para: \n{}\n".format(list(lista_emails)))
-    return email_apelido
+    lista_emails = emails_e_apelidos.keys()
+    print(f"Os emails estão sendo enviados para: \n{list(lista_emails)}\n")
+    return emails_e_apelidos
 
 
 def cria_planilha_emails(nome):
@@ -52,9 +52,9 @@ def cria_planilha_emails(nome):
     return (planilha, pagina_planilha)
 
 
-def envia_email(emails_e_apelidos):
+def envia_email(emails_apelidos):
 
-    for dest, apelido in emails_e_apelidos.items():
+    for dest, apelido in emails_apelidos.items():
 
         remetente = 'leandra.silva@ccc.ufcg.edu.br'
         senha = 'leandrinha1717'
@@ -80,5 +80,5 @@ def envia_email(emails_e_apelidos):
             print(f'O email não foi enviado para: {dest} \n')
 
 if __name__ == '__main__':
-    emails_e_apelidos = main(emails)
-    envia_email(emails_e_apelidos)
+    emails_apelidos = main(emails)
+    envia_email(emails_apelidos)
