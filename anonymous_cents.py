@@ -69,15 +69,15 @@ def envia_email(retorno):
         %s
         """ % (remetente, destinatario, mensagem)
 
-    try:
-        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-        server.ehlo()
-        server.login(remetente, senha)
-        server.sendmail(remetente,destinatario ,'Subject: Apelido planilha de centavos LOAC\n{}'.format(email_text))
-        server.close()
-        print('Email enviado com sucesso!')
-    except:
-        print('O email não foi enviado')
+        try:
+            server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+            server.ehlo()
+            server.login(remetente, senha)
+            server.sendmail(remetente,destinatario ,'Subject: Apelido planilha de centavos LOAC\n{}'.format(email_text))
+            server.close()
+            print(f'Email enviado com sucesso para: {dest} \n')
+        except:
+            print('O email não foi enviado')
 
 if __name__ == '__main__':
     retorno = main(emails)
