@@ -3,17 +3,19 @@ import random
 import smtplib
 
 
-
-
 def main(emails):
     planilha_centavos, pagina_planilha_centavos = cria_planilha_emails(
         'centavos')
     planilha_apelidos, pagina_planilha_apelidos = cria_planilha_emails(
         'apelidos')
 
+    pagina_planilha_centavos.write('A1', 'Apelido')
+    pagina_planilha_apelidos.write('A1', 'Email')
+    pagina_planilha_apelidos.write('B1', 'Apelido')
+
     emails_e_apelidos = cria_dicionario_apelidos(emails)
 
-    indice = 1
+    indice = 2
     for (email, apelido) in emails_e_apelidos.items():
         coluna_a = f'A{indice}'
         coluna_b = f'B{indice}'
@@ -31,6 +33,7 @@ def main(emails):
     print(f"Os emails estão sendo enviados para: \n{list(lista_emails)}\n")
     return emails_e_apelidos
 
+
 def cria_dicionario_apelidos(emails):
     dict_apelidos = {}
     for email in emails:
@@ -42,9 +45,8 @@ def cria_dicionario_apelidos(emails):
 def gera_apelido_sem_duplicidade(apelidos):
     apelido = random.randint(1000, 3000)
     if apelido in apelidos:
-        print('oi')
         return gera_apelido_sem_duplicidade(apelidos)
-    return apelido
+    return str(apelido)
 
 
 def cria_planilha_emails(nome):
@@ -54,7 +56,6 @@ def cria_planilha_emails(nome):
     bold = planilha.add_format({'bold': True})
     pagina_planilha.set_column('A:A', 50, bold)
 
-    pagina_planilha.write('A1', 'E-mails')
 
     return (planilha, pagina_planilha)
 
@@ -86,6 +87,7 @@ def envia_email(emails_apelidos):
             print(f'Email enviado com sucesso para: {dest} \n')
         except:
             print(f'O email não foi enviado para: {dest} \n')
+
 
 with open('emails.py', 'r') as e_mails:
     emails_passados = e_mails.read()
