@@ -67,22 +67,21 @@ def envia_email(emails_apelidos):
         senha = 'leandrinha1717'
 
         destinatario = dest
-        mensagem = "Oi, esse eh o seu apelido na planilha centavos.xlsx : " + \
-            str(apelido)
-        email_text = """\
+        mensagem = f"Oi, esse eh o seu apelido na planilha centavos.xlsx : {str(apelido)}"
+        email_text = f"""\
 
-        From: %s
-        To: %s
+        From: {remetente}
+        To: {destinatario}
 
-        %s
-        """ % (remetente, destinatario, mensagem)
+        {mensagem}
+        """
 
         try:
             server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
             server.ehlo()
             server.login(remetente, senha)
             server.sendmail(remetente, destinatario,
-                            'Subject: Apelido planilha de centavos LOAC\n{}'.format(email_text))
+                            f'Subject: Apelido planilha de centavos LOAC\n{email_text}')
             server.close()
             print(f'Email enviado com sucesso para: {dest} \n')
         except:
