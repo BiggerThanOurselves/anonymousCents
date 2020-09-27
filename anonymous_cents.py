@@ -3,9 +3,6 @@ import random
 import smtplib
 
 
-with open('emails.py', 'r') as e_mails:
-    emails_passados = e_mails.read()
-    exec(emails_passados)
 
 
 def main(emails):
@@ -14,23 +11,18 @@ def main(emails):
     planilha_apelidos, pagina_planilha_apelidos = cria_planilha_emails(
         'apelidos')
 
-    emails_e_apelidos = {}
-    random.seed(1098)
-    
-    raiz_apelido = random.randint(200, 300)
-    for indice, email in enumerate(emails):
+    emails_e_apelidos = cria_dicionario_apelidos(emails)
 
-        chave_apelido = indice + 2
-        apelido = raiz_apelido + chave_apelido
+    indice = 1
+    for (email, apelido) in emails_e_apelidos.items():
+        coluna_a = f'A{indice}'
+        coluna_b = f'B{indice}'
 
-        linha_email = f'A{chave_apelido}'
-        linha_apelido = f'B{chave_apelido}'
+        pagina_planilha_centavos.write(coluna_a, apelido)
 
-        pagina_planilha_apelidos.write(linha_email, email)
-        pagina_planilha_centavos.write(linha_email, email)
-
-        pagina_planilha_apelidos.write(linha_apelido, apelido)
-        emails_e_apelidos[email] = apelido
+        pagina_planilha_apelidos.write(coluna_a, email)
+        pagina_planilha_apelidos.write(coluna_b, apelido)
+        indice += 1
 
     planilha_centavos.close()
     planilha_apelidos.close()
@@ -38,6 +30,21 @@ def main(emails):
     lista_emails = emails_e_apelidos.keys()
     print(f"Os emails estão sendo enviados para: \n{list(lista_emails)}\n")
     return emails_e_apelidos
+
+def cria_dicionario_apelidos(emails):
+    dict_apelidos = {}
+    for email in emails:
+        apelido = gera_apelido_sem_duplicidade(dict_apelidos.values())
+        dict_apelidos[email] = apelido
+    return dict_apelidos
+
+
+def gera_apelido_sem_duplicidade(apelidos):
+    apelido = random.randint(1000, 3000)
+    if apelido in apelidos:
+        print('oi')
+        return gera_apelido_sem_duplicidade(apelidos)
+    return apelido
 
 
 def cria_planilha_emails(nome):
@@ -60,7 +67,8 @@ def envia_email(emails_apelidos):
         senha = 'leandrinha1717'
 
         destinatario = dest
-        mensagem = "Oi, esse eh o seu apelido na planilha centavos.xlsx : " + str(apelido)
+        mensagem = "Oi, esse eh o seu apelido na planilha centavos.xlsx : " + \
+            str(apelido)
         email_text = """\
 
         From: %s
@@ -73,11 +81,16 @@ def envia_email(emails_apelidos):
             server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
             server.ehlo()
             server.login(remetente, senha)
-            server.sendmail(remetente,destinatario ,'Subject: Apelido planilha de centavos LOAC\n{}'.format(email_text))
+            server.sendmail(remetente, destinatario,
+                            'Subject: Apelido planilha de centavos LOAC\n{}'.format(email_text))
             server.close()
             print(f'Email enviado com sucesso para: {dest} \n')
         except:
             print(f'O email não foi enviado para: {dest} \n')
+
+with open('emails.py', 'r') as e_mails:
+    emails_passados = e_mails.read()
+    exec(emails_passados)
 
 if __name__ == '__main__':
     emails_apelidos = main(emails)
