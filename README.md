@@ -5,6 +5,11 @@ author: Rodrigo Eloy e Leandra Silva
 # Anonymous Cents
 Projeto para a disciplina de Laboratório de Organização e Arquitetura de Computadores(LOAC).
 
+<div align=center>
+    <p><i>E vamos de centavos</i></p>
+    <img src='./img/perna-longa.gif'>
+</div>
+
 ## Objetivo do projeto
 Tendo em vista proteger a privacidade dos alunos as notas (centavos) da disciplina são registradas nas contas dos alunos de LOAC nos computadores localizados no LCC3, todavia existem diversos problemas que esse fato acarreta para os alunos:
 
