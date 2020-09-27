@@ -1,9 +1,8 @@
 import xlsxwriter
 import random
-import smtplib
 
 
-def main(emails):
+def cria_planilhas(emails):
     planilha_centavos, pagina_planilha_centavos = cria_planilha_emails(
         'centavos')
     planilha_apelidos, pagina_planilha_apelidos = cria_planilha_emails(
@@ -50,7 +49,7 @@ def gera_apelido_sem_duplicidade(apelidos):
 
 
 def cria_planilha_emails(nome):
-    planilha = xlsxwriter.Workbook(f'{nome}.xlsx')
+    planilha = xlsxwriter.Workbook(f'src/data/{nome}.xlsx')
     pagina_planilha = planilha.add_worksheet()
 
     bold = planilha.add_format({'bold': True})
@@ -58,41 +57,3 @@ def cria_planilha_emails(nome):
 
 
     return (planilha, pagina_planilha)
-
-
-def envia_email(emails_apelidos):
-
-    for dest, apelido in emails_apelidos.items():
-
-        remetente = 'leandra.silva@ccc.ufcg.edu.br'
-        senha = 'leandrinha1717'
-
-        destinatario = dest
-        mensagem = f"Oi, esse eh o seu apelido na planilha centavos.xlsx : {str(apelido)}"
-        email_text = f"""\
-
-        From: {remetente}
-        To: {destinatario}
-
-        {mensagem}
-        """
-
-        try:
-            server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-            server.ehlo()
-            server.login(remetente, senha)
-            server.sendmail(remetente, destinatario,
-                            f'Subject: Apelido planilha de centavos LOAC\n{email_text}')
-            server.close()
-            print(f'Email enviado com sucesso para: {dest} \n')
-        except:
-            print(f'O email não foi enviado para: {dest} \n')
-
-
-with open('emails.py', 'r') as e_mails:
-    emails_passados = e_mails.read()
-    exec(emails_passados)
-
-if __name__ == '__main__':
-    emails_apelidos = main(emails)
-    envia_email(emails_apelidos)
