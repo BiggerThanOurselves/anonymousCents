@@ -7,7 +7,7 @@ Projeto para a disciplina de Laboratório de Organização e Arquitetura de Comp
 
 <div align=center>
     <p><i>E vamos de centavos</i></p>
-    <img src='./img/perna-longa.gif'>
+    <img src='./src/assets/img/perna-longa.gif'>
 </div>
 
 ## Objetivo do projeto
