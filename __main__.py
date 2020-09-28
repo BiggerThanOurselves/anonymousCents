@@ -1,5 +1,5 @@
 from src.scripts.envia_email import envia_email
-from src.scripts.anonymous_cents import cria_planilhas
+from src.scripts.cria_planilhas import cria_planilhas
 
 with open('./src/data/emails.py', 'r') as e_mails:
     emails_passados = e_mails.read()
