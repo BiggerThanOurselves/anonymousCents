@@ -1,14 +1,16 @@
 import smtplib
+import getpass
 
 def envia_email(emails_apelidos):
 
     for dest, apelido in emails_apelidos.items():
 
-        remetente = 'fulano.onaluf@ccc.ufcg.edu.br'
-        senha = 'minhasenha'
+        remetente = str(input("Informe o e-mail do remetente: ")).lstrip()
+        senha = getpass.getpass(prompt="\nInforme a senha de e-mail do remetente: ").lstrip()
 
         destinatario = dest
-        mensagem = f"Oi, esse eh o seu apelido na planilha centavos.xlsx : {str(apelido)}"
+        entrada_mensagem = str(input("\nDigite a mensagem que deseja enviar para os destinatários (sem acentos): \n")).lstrip()
+        mensagem = f"{entrada_mensagem} : {str(apelido)}"
         email_text = f"""\
 
         From: {remetente}
@@ -24,6 +26,6 @@ def envia_email(emails_apelidos):
             server.sendmail(remetente, destinatario,
                             f'Subject: Apelido planilha de centavos LOAC\n{email_text}')
             server.close()
-            print(f'Email enviado com sucesso para: {dest} \n')
+            print(f'\nEmail enviado com sucesso para: {dest} \n')
         except:
             print(f'O email não foi enviado para: {dest} \n')
