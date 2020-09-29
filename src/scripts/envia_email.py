@@ -4,11 +4,12 @@ def envia_email(emails_apelidos):
 
     for dest, apelido in emails_apelidos.items():
 
-        remetente = 'fulano.onaluf@ccc.ufcg.edu.br'
-        senha = 'minhasenha'
+        remetente = str(input("Informe o e-mail do remetente: "))
+        senha = str(input("Informe a senha de e-mail do remetente: "))
 
         destinatario = dest
-        mensagem = f"Oi, esse eh o seu apelido na planilha centavos.xlsx : {str(apelido)}"
+        entrada_mensagem = str(input("Digite a mensagem que deseja enviar para os destinatários (sem acentos): "))
+        mensagem = f"{entrada_mensagem} : {str(apelido)}"
         email_text = f"""\
 
         From: {remetente}
