@@ -27,7 +27,7 @@ def cria_planilhas(emails):
     planilha_apelidos.save(filename=PATH_PLANILHA_APELIDOS)
 
     lista_emails = emails_e_apelidos.keys()
-    print(f"Os emails estão sendo enviados para: \n{list(lista_emails)}\n")
+    print(f"\nOs emails estão sendo enviados para: \n{list(lista_emails)}\n")
     return emails_e_apelidos
 
 def cria_planilha_centavos():

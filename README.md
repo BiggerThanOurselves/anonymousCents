@@ -63,12 +63,12 @@ $ python3 __main__.py
 ```
 $ Informe o e-mail do remetente: 
 
-
 $ Informe a senha de e-mail do remetente:
+```
+> :warning: o cursor estará travado ao receber sua senha, isto ocorrerá para que sua senha não seja exibida. 
 
-
+```
 $ Digite a mensagem que deseja enviar para os destinatários (sem acentos): 
-
 ```
 
 5. :heavy_check_mark: Após estes passos, o seu email será enviado para os emails registrados no arquivo `emails.py`.
