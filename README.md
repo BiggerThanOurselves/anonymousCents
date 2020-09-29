@@ -6,7 +6,7 @@ author: Rodrigo Eloy e Leandra Silva
 Projeto para a disciplina de Laboratório de Organização e Arquitetura de Computadores(LOAC).
 
 <div align=center>
-    <p><i>E vamos de centavos</i></p>
+    <p><i>E vamos de... centavos</i></p>
     <img src='./src/assets/img/perna-longa.gif'>
 </div>
 
@@ -16,15 +16,15 @@ Tendo em vista proteger a privacidade dos alunos as notas (centavos) da discipli
 1. O acesso (remoto principalmente) desses centavos não é intuitivo, uma vez que é necessário acessar por meio de linha de comando com ssh;
 2. Devido a problemas de infraestrutura do prédio em que o LCC3 está localizado o acesso aos computadores ficou inviável, acarretando na falta de informação acerca das notas de cada aluno.
 
-Tendo isso em vista, criamos o **AnonymousCents** que possui as seguintes funcionalidades:
+Tendo isso em vista, criamos o **AnonymousCents** que possui as seguintes ***funcionalidades***:
 
- * produzir apelidos a partir dos e-mails dos alunos; 
+ * produz apelidos a partir dos e-mails dos alunos; 
 
- * enviar o apelido automaticamente para o próprio email do aluno;
+ * envia o apelido automaticamente para o próprio email do aluno;
 
- * gerar uma planilha para o professor com os emails dos alunos e o seu respectivo apelido;
+ * gera uma planilha para o professor com os emails dos alunos e o seu respectivo apelido;
 
- * gerar outra planilha (*centavos.xlsx*) que será acessível pelos alunos, onde o professor irá cadastrar os centavos de cada um, fazendo com que os problemas previamente citados sejam extintos.
+ * gera uma segunda planilha (*centavos.xlsx*) que será acessível pelos alunos, onde o professor irá cadastrar os centavos de cada um, fazendo com que os problemas previamente citados sejam extintos.
 
 ## :arrow_forward: Como executar o projeto
 ---
@@ -65,10 +65,11 @@ Tendo isso em vista, criamos o **AnonymousCents** que possui as seguintes funcio
    
     $ Informe a senha de e-mail do remetente:
     ```
-> :warning: o cursor estará travado ao receber sua senha, isto ocorrerá para que sua senha não seja exibida. 
+    > :warning: o cursor estará travado ao receber sua senha, isto ocorrerá para que sua senha não seja exibida. 
 
     ```
     $ Digite a mensagem que deseja enviar para os destinatários (sem acentos): 
+    
     ```
 
 5. :heavy_check_mark: Após finalizar estes passos, o seu email será enviado para os emails registrados no arquivo `emails.py`.
