@@ -22,9 +22,9 @@ Tendo isso em vista, criamos o **AnonymousCents** que possui as seguintes ***fun
 
  * envia o apelido automaticamente para o próprio email do aluno;
 
- * gera uma planilha para o professor com os emails dos alunos e o seu respectivo apelido;
+ * gera de forma automática uma planilha para o professor com os emails dos alunos e o seu respectivo apelido;
 
- * gera uma segunda planilha (*centavos.xlsx*) que será acessível pelos alunos, onde o professor irá cadastrar os centavos de cada um, fazendo com que os problemas previamente citados sejam extintos.
+ * gera uma segunda planilha (*centavos.xlsx*) sendo essa acessível pelos alunos e conténdo todos os apelidos dos alunos, e os seus respectivos centavos registrados pelo professor, fazendo com que os problemas previamente citados sejam extintos.
 
 ## :arrow_forward: Como executar o projeto
 ---
