@@ -20,11 +20,11 @@ Tendo isso em vista, criamos o **AnonymousCents** que possui as seguintes funcio
 
  * produzir apelidos a partir dos e-mails dos alunos; 
 
- * envia o apelido automaticamente para o próprio email do aluno;
+ * enviar o apelido automaticamente para o próprio email do aluno;
 
- * gera uma planilha para o professor com os emails dos alunos e o seu respectivo apelido;
+ * gerar uma planilha para o professor com os emails dos alunos e o seu respectivo apelido;
 
- * gera outra planilha (*centavos.xlsx*) que será acessível pelos alunos, onde o professor irá cadastrar os centavos de cada um, fazendo com que os problemas previamente citados sejam apagados.
+ * gerar outra planilha (*centavos.xlsx*) que será acessível pelos alunos, onde o professor irá cadastrar os centavos de cada um, fazendo com que os problemas previamente citados sejam extintos.
 
 ## :arrow_forward: Como executar o projeto
 ---
@@ -36,39 +36,39 @@ Tendo isso em vista, criamos o **AnonymousCents** que possui as seguintes funcio
 > :warning: caso o comando acima não funcione, tente `pip3 install openpyxl`
 
 ---
-Siga o passo-a-passo a seguir para executar o projeto
+:pencil: Siga o passo-a-passo a seguir para executar o projeto
 
 
 1. Na pasta ***data*** crie um arquivo `emails.py`:
 
-```
-$ cd data
-$ touch emails.py
-```
+    ```
+    $ cd data
+    $ touch emails.py
+    ```
 
 2. Abra o arquivo e adicione os e-mails que você deseja que sejam criados apelidos e adicione em uma lista de emails no seguinte formato:
 
-```
-emails = ['email01@gmail.com', 'email02@ccc.ufcg.edu.br', 'email03@computacao.ufcg.edu.br']
-```
+    ```
+    emails = ['email01@gmail.com', 'email02@ccc.ufcg.edu.br', 'email03@computacao.ufcg.edu.br']
+    ```
 
 3. Execute o script `__main__.py`:
 
-```
-$ python3 __main__.py
-```
+    ```
+    $ python3 __main__.py
+    ```
 
 4. Ao executar o script, serão pedidas as seguintes informações: 
 
-```
-$ Informe o e-mail do remetente: 
-
-$ Informe a senha de e-mail do remetente:
-```
+    ```
+    $ Informe o e-mail do remetente: 
+   
+    $ Informe a senha de e-mail do remetente:
+    ```
 > :warning: o cursor estará travado ao receber sua senha, isto ocorrerá para que sua senha não seja exibida. 
 
-```
-$ Digite a mensagem que deseja enviar para os destinatários (sem acentos): 
-```
+    ```
+    $ Digite a mensagem que deseja enviar para os destinatários (sem acentos): 
+    ```
 
-5. :heavy_check_mark: Após estes passos, o seu email será enviado para os emails registrados no arquivo `emails.py`.
+5. :heavy_check_mark: Após finalizar estes passos, o seu email será enviado para os emails registrados no arquivo `emails.py`.
