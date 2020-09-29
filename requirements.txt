@@ -1,0 +1,2 @@
+openpyxl==3.0.5
+colorama==0.3.3
