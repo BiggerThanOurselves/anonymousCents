@@ -20,7 +20,7 @@ def seleciona_opcao():
     opcao_selecionada = str(input(constantes.OPCOES_SISTEMA)).replace(' ', '')
 
     if opcao_selecionada not in constantes.DICT_OPCOES.keys():
-        print(Fore.RED + 'Seleciona uma opção válida')
+        print(Fore.RED + 'Selecione uma opção válida')
         seleciona_opcao()
 
     return opcao_selecionada
