@@ -67,11 +67,13 @@ Tendo isso em vista, criamos o **AnonymousCents** que possui as seguintes ***fun
    
     $ Informe a senha de e-mail do remetente:
     ```
+    
     > :warning: o cursor estará travado ao receber sua senha, isto ocorrerá para que sua senha não seja exibida. 
 
-    ```
-    $ Digite a mensagem que deseja enviar para os destinatários (sem acentos): 
-    
-    ```
+   
+    > :warning: A mensagem que será enviada está armazenada na varíavel *mensagem* contida no script `envia_email.py`
+   
+  
+ 
 
 5. :heavy_check_mark: Após finalizar estes passos, o seu email será enviado para os emails registrados no arquivo `emails.py`.

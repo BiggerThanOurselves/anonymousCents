@@ -9,14 +9,14 @@ def envia_email(emails_apelidos):
         senha = getpass.getpass(prompt="\nInforme a senha de e-mail do remetente: ").lstrip()
 
         destinatario = dest
-        entrada_mensagem = str(input("\nDigite a mensagem que deseja enviar para os destinatários (sem acentos): \n")).lstrip()
-        mensagem = f"{entrada_mensagem} : {str(apelido)}"
+        mensagem = "Oi, esse eh o seu apelido na planilha centavos.xlsx" 
+        msg = f"{mensagem} : {str(apelido)}"
         email_text = f"""\
 
         From: {remetente}
         To: {destinatario}
 
-        {mensagem}
+        {msg}
         """
 
         try:
