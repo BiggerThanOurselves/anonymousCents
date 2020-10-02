@@ -8,20 +8,22 @@ with open('./src/data/emails.py', 'r') as e_mails:
     exec(emails_passados)
 
 def main():
-    opcao = seleciona_opcao()   
+    opcao = seleciona_opcao()
 
-    if opcao == '5':
+    if opcao == '2':
         print('Até a próxima!')
     else:
-        print(opcao)
         main()
 
 def seleciona_opcao():
     opcao_selecionada = str(input(constantes.OPCOES_SISTEMA)).replace(' ', '')
 
     if opcao_selecionada not in constantes.DICT_OPCOES.keys():
+        print('--------------------------')
         print(Fore.RED + 'Selecione uma opção válida')
-        seleciona_opcao()
+        print('--------------------------')
+
+        opcao_selecionada = seleciona_opcao()
 
     return opcao_selecionada
 
