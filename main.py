@@ -1,7 +1,9 @@
 from colorama import (init, Fore, Style)
 from src.data import constantes
 from src.scripts.envia_email import envia_email
-from src.scripts.cria_planilhas import cria_planilhas
+from src.scripts.cria_planilhas import cria_planilha_apelidos_emails
+import gspread
+
 
 with open('./src/data/emails.py', 'r') as e_mails:
     emails_passados = e_mails.read()
@@ -10,11 +12,12 @@ with open('./src/data/emails.py', 'r') as e_mails:
 def main():
     opcao = seleciona_opcao()   
 
-    if opcao == '5':
+    if opcao == '2':
         print('Até a próxima!')
     else:
         print(opcao)
-        main()
+        cria_planilha_apelidos_emails(dicionario)    
+
 
 def seleciona_opcao():
     opcao_selecionada = str(input(constantes.OPCOES_SISTEMA)).replace(' ', '')
@@ -28,5 +31,7 @@ def seleciona_opcao():
 if __name__ == '__main__':
     init(autoreset=True)
     main()
-    # emails_apelidos = cria_planilhas(emails)
-    # envia_email(emails_apelidos)
+
+
+
+

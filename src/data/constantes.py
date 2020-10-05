@@ -2,10 +2,7 @@ OPCOES_SISTEMA = """
 Digite o número de uma das opções a seguir:
 
 1. Criar planilha de apelidos
-2. Cadastrar centavos
-3. Enviar apelidos para alunos
-4. Limpar planilha existente
-5. Sair
+2. Sair
 
 Digite aqui: """
 
