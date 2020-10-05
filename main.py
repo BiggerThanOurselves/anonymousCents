@@ -5,6 +5,9 @@ from src.scripts.cria_planilhas import cria_planilha_apelidos_emails
 import gspread
 
 
+dicionario = {"leandra.silva@ccc.ufcg.edu.br": "263125"}
+endereco_planilha = '1dBC8d7zBAy0TnL_2PC58DvXK9FKgSE8ljVsiGh-xWKk'
+
 with open('./src/data/emails.py', 'r') as e_mails:
     emails_passados = e_mails.read()
     exec(emails_passados)
@@ -16,7 +19,7 @@ def main():
         print('Até a próxima!')
     else:
         print(opcao)
-        cria_planilha_apelidos_emails(dicionario)    
+        cria_planilha_apelidos_emails(dicionario, endereco_planilha)    
 
 
 def seleciona_opcao():

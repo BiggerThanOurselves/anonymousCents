@@ -39,12 +39,13 @@ def cria_planilha_centavos():
 
     return (planilha_centavos, pagina_planilha_centavos)
 
-def cria_planilha_apelidos_emails(dict_email_apelido):
+def cria_planilha_apelidos_emails(dict_email_apelido, endereco_planilha):
+
+    server_gc = gspread.service_account(filename= 'credentials.json')
+    sheet_google = server_gc.open_by_key(endereco_planilha)
+    pag_planilha = sheet_google.sheet1
 
     for email, apelido in dict_email_apelido.items():
-        server_gc = gspread.service_account(filename= 'credentials.json')
-        sheet_google = server_gc.open_by_key('1dBC8d7zBAy0TnL_2PC58DvXK9FKgSE8ljVsiGh-xWKk')
-        pag_planilha = sheet_google.sheet1
 
         add_email_apelido = [email, apelido]
         pag_planilha.append_row(add_email_apelido)
