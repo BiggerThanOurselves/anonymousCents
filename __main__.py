@@ -3,6 +3,7 @@ from src.scripts.inicia_sistema import inicia_sistema
 from src.scripts.envia_email import envia_email
 
 OPCOES_SISTEMA = """
+--------------------------
 Digite o número de uma das opções a seguir:
 
 1. Iniciar sistema
@@ -22,7 +23,7 @@ def main():
         opcao = seleciona_opcao()
 
         if opcao == '2':
-            print('Até a próxima!')
+            print(Fore.GREEN + 'Até a próxima!')
             break
         else:
             DICT_OPCOES[opcao]()
@@ -30,6 +31,7 @@ def main():
 
 def seleciona_opcao():
     opcao_selecionada = str(input(OPCOES_SISTEMA)).replace(' ', '')
+    print('--------------------------')
 
     if opcao_selecionada not in DICT_OPCOES.keys():
         print('--------------------------')
@@ -43,5 +45,3 @@ def seleciona_opcao():
 if __name__ == '__main__':
     init(autoreset=True)
     main()
-    # emails_apelidos = cria_planilhas(emails)
-    # envia_email(emails_apelidos)
