@@ -3,6 +3,7 @@ import json
 import random
 from decouple import config
 from colorama import Fore
+import gspread
 
 def cria_planilhas():
     emails = open('src/data/emails.txt')
@@ -27,6 +28,26 @@ def verifica_existencia_emails_cadastrados():
 
     print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
     verifica_existencia_emails_cadastrados()
+
+def cria_planilha_apelidos_emails(dict_email_apelido, identificador_planilha):
+
+    server_gc = gspread.service_account(filename= 'credentials.json')
+    sheet_google = server_gc.open_by_key(identificador_planilha)
+    pag_planilha = sheet_google.sheet1
+
+    for email, apelido in dict_email_apelido.items():
+        add_email_apelido = [email, apelido]
+        pag_planilha.append_row(add_email_apelido)
+
+def cria_planilha_apelidos(dict_email_apelido, identificador_planilha):
+
+    server_gc = gspread.service_account(filename= 'credentials.json')
+    sheet_google = server_gc.open_by_key(identificador_planilha)
+    pag_planilha = sheet_google.sheet1
+
+    for apelido in dict_email_apelido.values():
+        add_apelido = [apelido]
+        pag_planilha.append_row(add_apelido)
 
 
 def cria_dicionario_apelidos(emails):
