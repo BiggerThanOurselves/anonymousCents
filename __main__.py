@@ -43,5 +43,3 @@ def seleciona_opcao():
 if __name__ == '__main__':
     init(autoreset=True)
     main()
-    # emails_apelidos = cria_planilhas(emails)
-    # envia_email(emails_apelidos)

@@ -1,6 +1,7 @@
 import os 
 from colorama import (init, Fore, Style)
 from src.scripts.cria_planilhas import cria_planilhas
+
 def salva_tokens():
     token_centavos = str(input('\nInsira aqui o identificador da planilha de centavos: '))
     token_apelidos = str(input('Insira aqui o identificador da planilha de e-mail e apelidos: '))
@@ -11,17 +12,12 @@ def salva_tokens():
         env.write(f'TOKEN_APELIDOS = {token_apelidos}')
         env.close()
 
-def verifica_existencia_emails():
-    if not os.path.exists('src.data.emails.txt'):
-        print(Fore.RED + 
-        '''Arquivo emails.txt não identificado.
-        Você precisa criar esse arquivo e preenche-lo com os e-mails dos alunos, cada aluno em uma linha.''')
-
-
 def inicia_sistema():
-    salva_tokens()
+    if os.path.exists('src/data/emails.txt'):
+        salva_tokens()
+        cria_planilhas()
 
-    if not os.path.exists('src/data/emails.txt'):
+    else:
         print(Fore.RED + '''
 ---------------------------
 Arquivo emails.txt não identificado.
@@ -29,5 +25,3 @@ Você precisa criar esse arquivo e preenche-lo com os e-mails dos alunos, cada a
 Finalize o sistema, adicione o arquivo e inicie novamente o sistema.
 ---------------------------
 ''')
-    else:
-        cria_planilhas()
