@@ -1,18 +1,34 @@
-from decouple import config
+import os
 import json
 import random
+from decouple import config
+from colorama import Fore
 
 def cria_planilhas():
     emails = open('src/data/emails.txt')
-    lines = emails.readlines()
-    lista_emails = [line.rstrip(' \n') for line in lines if line.rstrip(' \n') != '']
+    linhas = emails.readlines()
 
+    existe_emails_cadastrados = verifica_existencia_emails_cadastrados()
+
+    if not existe_emails_cadastrados:
+        return
+
+    lista_emails = [linha.rstrip(' \n') for linha in linhas if linha.rstrip(' \n') != '']
     dict_apelidos = cria_dicionario_apelidos(lista_emails)
 
-    # print(config('TOKEN_CENTAVOS'))
-    # Adicionar os métodos 
+def verifica_existencia_emails_cadastrados():
+    dict_bool = {'s': True, 'n': False}
 
-    
+    if os.path.exists('src/data/dict_emails_apelidos.json'):
+        sobrescrever = str(input('\nJá existem apelidos apelidos e e-mails cadastrados, deseja sobrescreve-los? (S/N) '))
+
+        if sobrescrever.lower() in dict_bool:
+            return dict_bool[sobrescrever.lower()]
+
+    print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
+    verifica_existencia_emails_cadastrados()
+
+
 def cria_dicionario_apelidos(emails):
     dict_apelidos = {}
     for email in emails:
