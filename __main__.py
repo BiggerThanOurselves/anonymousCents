@@ -48,6 +48,9 @@ if __name__ == '__main__':
     init(autoreset=True)
     main()
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0363a9aae82607e5e54f8da9747c35ede9ecef0e
     # envia_email(emails_apelidos)
 >>>>>>> adiciona funções de criação de planilhas
