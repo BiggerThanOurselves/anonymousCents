@@ -1,6 +1,8 @@
 from colorama import (init, Fore, Style)
 from src.scripts.inicia_sistema import inicia_sistema
 from src.scripts.envia_email import envia_email
+from src.scripts.cria_planilhas import cria_planilha_apelidos
+
 
 OPCOES_SISTEMA = """
 Digite o número de uma das opções a seguir:
@@ -43,5 +45,4 @@ def seleciona_opcao():
 if __name__ == '__main__':
     init(autoreset=True)
     main()
-    # emails_apelidos = cria_planilhas(emails)
     # envia_email(emails_apelidos)

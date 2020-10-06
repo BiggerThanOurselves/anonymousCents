@@ -1,6 +1,7 @@
 import os 
 from colorama import (init, Fore, Style)
 from src.scripts.cria_planilhas import cria_planilhas
+
 def salva_tokens():
     token_centavos = str(input('\nInsira aqui o identificador da planilha de centavos: '))
     token_apelidos = str(input('Insira aqui o identificador da planilha de e-mail e apelidos: '))
