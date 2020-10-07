@@ -4,6 +4,7 @@ import random
 from decouple import config
 from colorama import Fore
 import gspread
+from src.scripts.envia_email import envia_email
 
 def cria_planilhas():
     emails = open('src/data/emails.txt')
@@ -16,6 +17,10 @@ def cria_planilhas():
 
     lista_emails = [linha.rstrip(' \n') for linha in linhas if linha.rstrip(' \n') != '']
     dict_apelidos = cria_dicionario_apelidos(lista_emails)
+
+    cria_planilha_apelidos_emails(dict_apelidos, str(config('TOKEN_APELIDOS')))
+    cria_planilha_apelidos(dict_apelidos, str(config('TOKEN_CENTAVOS')))
+    envia_email()
 
 def verifica_existencia_emails_cadastrados():
     dict_bool = {'s': True, 'n': False}

@@ -34,9 +34,11 @@ def verifica_existencia_identificadores():
 
     if config('TOKEN_CENTAVOS') is not None and config('TOKEN_APELIDOS') is not None:
         sobrescrever = str(input('\nJá existem idenficadores registrados, deseja sobrescreve-los? (S/N) '))
-
+    
         if sobrescrever.lower() in dict_bool:
             return dict_bool[sobrescrever.lower()]
     
         print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
         verifica_existencia_identificadores()
+    
+    return True
