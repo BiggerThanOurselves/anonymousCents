@@ -1,18 +1,15 @@
+import json
 import smtplib
 import getpass
-import json
-
-def open_json():
-    arquivo_json = open('src/data/dict_emails_apelidos.json', 'r')
-    dict_dados_json = json.load(arquivo_json)
-    return dict_dados_json
+from src.scripts.util.manipular_json import open_json
 
 def envia_email():
+    emails_apelidos = open_json('src/data/dict_emails_apelidos.json')
+    print(str(emails_apelidos))
+    remetente = str(input("Informe o e-mail do remetente: ")).lstrip()
+    senha = getpass.getpass(prompt="\nInforme a senha de e-mail do remetente: ").lstrip()
+    for dest, apelido in emails_apelidos.items():
 
-    for dest, apelido in open_json().items():
-
-        remetente = str(input("Informe o e-mail do remetente: ")).lstrip()
-        senha = getpass.getpass(prompt="\nInforme a senha de e-mail do remetente: ").lstrip()
 
         destinatario = dest
         mensagem = "Oi, esse eh o seu apelido na planilha centavos.xlsx" 
@@ -35,4 +32,3 @@ def envia_email():
             print(f'\nEmail enviado com sucesso para: {dest} \n')
         except:
             print(f'O email não foi enviado para: {dest} \n')
-

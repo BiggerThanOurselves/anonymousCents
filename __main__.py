@@ -1,7 +1,5 @@
 from colorama import (init, Fore, Style)
 from src.scripts.inicia_sistema import inicia_sistema
-from src.scripts.envia_email import envia_email
-from src.scripts.cria_planilhas import cria_planilha_apelidos
 
 
 OPCOES_SISTEMA = """
