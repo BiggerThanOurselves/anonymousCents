@@ -38,5 +38,5 @@ def verifica_existencia_identificadores():
         if sobrescrever.lower() in dict_bool:
             return dict_bool[sobrescrever.lower()]
     
-    print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
-    verifica_existencia_identificadores()
+        print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
+        verifica_existencia_identificadores()
