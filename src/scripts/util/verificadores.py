@@ -20,7 +20,7 @@ def verifica_existencia_emails_cadastrados():
     dict_bool = {'s': True, 'n': False}
 
     if os.path.exists('src/data/dict_emails_apelidos.json'):
-        sobrescrever = str(input('\nJá existem apelidos apelidos e e-mails cadastrados, deseja sobrescreve-los? (S/N) '))
+        sobrescrever = str(input('\nJá existem apelidos apelidos e e-mails cadastrados, deseja sobrescreve-los? (S/N) ')).strip()
 
         if sobrescrever.lower() in dict_bool:
             return dict_bool[sobrescrever.lower()]
