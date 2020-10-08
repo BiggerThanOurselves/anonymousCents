@@ -25,5 +25,7 @@ def verifica_existencia_emails_cadastrados():
         if sobrescrever.lower() in dict_bool:
             return dict_bool[sobrescrever.lower()]
 
-    print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
-    verifica_existencia_emails_cadastrados()
+        print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
+        verifica_existencia_emails_cadastrados()
+        
+    return True
