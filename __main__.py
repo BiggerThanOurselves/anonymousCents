@@ -1,7 +1,5 @@
 from colorama import (init, Fore, Style)
 from src.scripts.inicia_sistema import inicia_sistema
-from src.scripts.envia_email import envia_email
-from src.scripts.cria_planilhas import cria_planilha_apelidos
 
 
 OPCOES_SISTEMA = """
@@ -25,7 +23,7 @@ def main():
         opcao = seleciona_opcao()
 
         if opcao == '2':
-            print(Fore.GREEN + 'Até a próxima!')
+            print(Fore.GREEN + '\nAté a próxima!')
             break
         else:
             DICT_OPCOES[opcao]()
