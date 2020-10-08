@@ -1,6 +1,7 @@
 import json
 import smtplib
 import getpass
+from decouple import config
 from colorama import Fore
 from src.scripts.util.manipular_json import open_json
 
@@ -16,7 +17,7 @@ def envia_email():
         mensagem = f"Oi, esse eh o seu apelido na planilha centavos.xlsx {apelido}."
         email_text = f"""\
 {mensagem}
-Link para a planilha: {link_planilha}\
+Link para a planilha: https://docs.google.com/spreadsheets/d/{config('TOKEN_CENTAVOS')}\
 """
 
         try:

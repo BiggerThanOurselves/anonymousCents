@@ -14,6 +14,7 @@ def cria_dicionario_apelidos(emails):
 
 def gera_apelido_sem_duplicidade(apelidos):
     apelido = random.randint(1000, 3000)
+
     if apelido in apelidos:
         return gera_apelido_sem_duplicidade(apelidos)
     return str(apelido)
