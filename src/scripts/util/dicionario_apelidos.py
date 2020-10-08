@@ -17,4 +17,3 @@ def gera_apelido_sem_duplicidade(apelidos):
     if apelido in apelidos:
         return gera_apelido_sem_duplicidade(apelidos)
     return str(apelido)
-
