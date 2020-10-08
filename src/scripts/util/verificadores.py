@@ -5,8 +5,8 @@ from decouple import config
 def verifica_existencia_identificadores():
     dict_bool = {'s': True, 'n': False}
 
-    if config('TOKEN_CENTAVOS') is not None and config('TOKEN_APELIDOS') is not None:
-        sobrescrever = str(input('\nJá existem idenficadores registrados, deseja sobrescreve-los? (S/N) '))
+    if os.path.exists('.env') and config('TOKEN_CENTAVOS', default=None) is not None and config('TOKEN_APELIDOS', default=None) is not None:
+        sobrescrever = str(input('\nJá existem idenficadores registrados, deseja sobrescreve-los? (S/N) ')).strip()
 
         if sobrescrever.lower() in dict_bool:
             return dict_bool[sobrescrever.lower()]
