@@ -2,8 +2,10 @@ import os
 from colorama import Fore
 from src.scripts.cria_planilhas import cria_planilhas
 from src.scripts.util.verificadores import verifica_existencia_identificadores
+from src.scripts.util.manipular_json import abre_json
 
 def inicia_sistema():
+    
     if os.path.exists('src/data/emails.txt'):
         salva_tokens()
         cria_planilhas()

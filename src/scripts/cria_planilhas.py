@@ -36,11 +36,10 @@ def cria_planilha_apelidos_emails(dict_email_apelido, identificador_planilha):
 
 def cria_planilha_apelidos(dict_email_apelido, identificador_planilha):
 
-    server_gc = gspread.service_account(filename= 'credentials.json')
+    server_gc = gspread.service_account(filename='credentials.json')
     sheet_google = server_gc.open_by_key(identificador_planilha)
     pag_planilha = sheet_google.sheet1
 
     for apelido in dict_email_apelido.values():
         add_apelido = [apelido]
         pag_planilha.append_row(add_apelido)
-
