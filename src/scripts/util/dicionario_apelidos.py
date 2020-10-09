@@ -34,7 +34,7 @@ def adiciona_email_dict_apelidos(email):
     if email not in dict_apelidos:
         dict_apelidos[email] = apelido
         grava_json(PATH_DICIONAIO_APELIDOS, dict_apelidos)
-        return {email, apelido}
+        return (email, apelido)
 
     print(Fore.RED + f'O e-mail {email} já está cadastrado no sistema.')
-    return {}
+    return (None, None)
