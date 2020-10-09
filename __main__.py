@@ -25,7 +25,7 @@ def main():
         opcao = seleciona_opcao()
 
         if opcao == '3':
-            print(Fore.GREEN + '\nAté a próxima!')
+            print(Fore.GREEN + '\nAté a próxima!\n')
             break
         else:
             DICT_OPCOES[opcao]()
