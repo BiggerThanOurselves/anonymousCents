@@ -3,10 +3,10 @@ import smtplib
 import getpass
 from decouple import config
 from colorama import Fore
-from src.scripts.util.manipular_json import open_json
+from src.scripts.util.manipular_json import abre_json
 
 def envia_email():
-    emails_apelidos = open_json('src/data/dict_emails_apelidos.json')
+    emails_apelidos = abre_json('src/data/dict_emails_apelidos.json')
 
     remetente = str(input("\nInforme o e-mail do remetente: ")).lstrip()
     senha = getpass.getpass(prompt="Informe a senha de e-mail do remetente: ").lstrip()

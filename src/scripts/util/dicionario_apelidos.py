@@ -1,20 +1,40 @@
+import os
 import json
 import random
-from src.scripts.util.manipular_json import grava_json
+from colorama import Fore
+from src.scripts.util.manipular_json import (grava_json, abre_json)
+
+PATH_DICIONAIO_APELIDOS = 'src/data/dict_emails_apelidos.json'
 
 def cria_dicionario_apelidos(emails):
-    dict_apelidos = {}
     for email in emails:
-        apelido = gera_apelido_sem_duplicidade(dict_apelidos.values())
-        dict_apelidos[email] = apelido
+        adiciona_email_dict_apelidos(email)
 
-    grava_json('src/data/dict_emails_apelidos.json', dict_apelidos)
-
-    return dict_apelidos
+    return abre_json(PATH_DICIONAIO_APELIDOS)
 
 def gera_apelido_sem_duplicidade(apelidos):
-    apelido = random.randint(1000, 3000)
+    apelido = str(random.randint(1000, 3000))
 
     if apelido in apelidos:
-        return gera_apelido_sem_duplicidade(apelidos)
-    return str(apelido)
+        apelido = gera_apelido_sem_duplicidade(apelidos)
+
+    return apelido
+
+def acessa_dicionario_apelidos():
+    if os.path.exists(PATH_DICIONAIO_APELIDOS):
+        dict_apelidos = abre_json(PATH_DICIONAIO_APELIDOS)
+        return dict_apelidos
+
+    return {}
+
+def adiciona_email_dict_apelidos(email):
+    dict_apelidos = acessa_dicionario_apelidos()
+    apelido = gera_apelido_sem_duplicidade(dict_apelidos)
+
+    if email not in dict_apelidos:
+        dict_apelidos[email] = apelido
+        grava_json(PATH_DICIONAIO_APELIDOS, dict_apelidos)
+        return (email, apelido)
+
+    print(Fore.RED + f'O e-mail {email} já está cadastrado no sistema.')
+    return (None, None)
