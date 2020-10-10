@@ -7,7 +7,16 @@ from src.scripts.util.envia_email import envia_email
 from src.scripts.util.verificadores import verifica_existencia_emails_cadastrados
 from src.scripts.util.dicionario_apelidos import cria_dicionario_apelidos
 
+def inicia_servidor_planilhas(identificador_planilha):
+
+    server_gc = gspread.service_account(filename='credentials.json')
+    sheet_google = server_gc.open_by_key(identificador_planilha)
+    pag_planilha = sheet_google.sheet1
+    
+    return pag_planilha
+
 def cria_planilhas():
+
     emails = open('src/data/emails.txt')
     linhas = emails.readlines()
 
@@ -26,20 +35,22 @@ def cria_planilhas():
 
 def cria_planilha_apelidos_emails(dict_email_apelido, identificador_planilha):
 
-    server_gc = gspread.service_account(filename='credentials.json')
-    sheet_google = server_gc.open_by_key(identificador_planilha)
-    pag_planilha = sheet_google.sheet1
-
+    pagina_planilha = inicia_servidor_planilhas(identificador_planilha)
+    pagina_planilha.clear()
     for email, apelido in dict_email_apelido.items():
-        add_email_apelido = [email, apelido]
-        pag_planilha.append_row(add_email_apelido)
+        add_planilha([email, apelido], pagina_planilha)
 
 def cria_planilha_apelidos(dict_email_apelido, identificador_planilha):
 
-    server_gc = gspread.service_account(filename='credentials.json')
-    sheet_google = server_gc.open_by_key(identificador_planilha)
-    pag_planilha = sheet_google.sheet1
+    pagina_planilha = inicia_servidor_planilhas(identificador_planilha)
+    pagina_planilha.clear()
 
     for apelido in dict_email_apelido.values():
-        add_apelido = [apelido]
-        pag_planilha.append_row(add_apelido)
+        add_planilha([apelido], pagina_planilha)
+
+def add_planilha(lista, pagina_adicionada):
+    adiciona = lista
+    pagina_adicionada.append_row(adiciona)
+
+
+

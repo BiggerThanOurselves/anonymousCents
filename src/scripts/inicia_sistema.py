@@ -5,7 +5,7 @@ from src.scripts.util.verificadores import verifica_existencia_identificadores
 from src.scripts.util.manipular_json import abre_json
 
 def inicia_sistema():
-    
+
     if os.path.exists('src/data/emails.txt'):
         cria_planilhas()
         print(Fore.GREEN + '\nPlanilhas criadas e cadastradas!')
@@ -27,3 +27,4 @@ def salva_tokens():
         env = open('.env', 'w')
         env.write(f'''TOKEN_CENTAVOS={token_centavos}\nTOKEN_APELIDOS={token_apelidos}''')
         env.close()
+
