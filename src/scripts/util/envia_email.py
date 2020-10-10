@@ -20,7 +20,7 @@ def envia_email():
 Oi, esse eh o seu apelido na planilha centavos.xlsx {apelido}.
 Link para a planilha: https://docs.google.com/spreadsheets/d/{config('TOKEN_CENTAVOS')}\
 """
-        envia(remetente, senha, destinatario, dest, apelido, email_text)
+        envia(remetente, senha, destinatario, email_text)
 
 
 def envia(remetente, senha, destinatario, email_text):
@@ -49,4 +49,3 @@ def envia_email_unico(destinatario, apelido):
 Link para a planilha: https://docs.google.com/spreadsheets/d/{config('TOKEN_CENTAVOS')}\
 """
     envia(remetente, senha, destinatario, email_text)
-
