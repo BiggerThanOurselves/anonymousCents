@@ -1,9 +1,7 @@
 apelidos.xlsx
-emails.py
 centavos.xlsx
 
 __pycache__
 .vscode/
 .env
 dict_emails_apelidos.json
-emails.txt

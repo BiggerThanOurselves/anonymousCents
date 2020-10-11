@@ -4,21 +4,20 @@ from src.scripts.util.manipula_planilhas import cria_planilhas
 from src.scripts.util.verificadores import verifica_existencia_identificadores
 from src.scripts.util.manipular_json import abre_json
 
+ARQUIVO_VAZIO = '''
+>> Arquivo emails.txt vazio.
+> Você precisa preenche-lo com os e-mails dos alunos, cada aluno em uma linha.
+'''
+
 def inicia_sistema():
 
-    if os.path.exists('src/data/emails.txt'):
+    if os.path.getsize('src/data/emails.txt') > 0:
         salva_tokens()
         cria_planilhas()
         print(Fore.GREEN + '\nPlanilhas criadas e cadastradas!')
 
     else:
-        print(Fore.RED + '''
----------------------------
-Arquivo emails.txt não identificado.
-Você precisa criar esse arquivo e preenche-lo com os e-mails dos alunos, cada aluno em uma linha.
-Finalize o sistema, adicione o arquivo e inicie novamente o sistema.
----------------------------
-''')
+        print(Fore.RED + ARQUIVO_VAZIO)
 
 def salva_tokens():
     if verifica_existencia_identificadores():

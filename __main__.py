@@ -21,7 +21,6 @@ DICT_OPCOES = {
 }
 
 def main():
-
     while(True):
         opcao = seleciona_opcao()
         DICT_OPCOES[opcao]()

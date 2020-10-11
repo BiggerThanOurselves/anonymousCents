@@ -7,8 +7,8 @@ from src.scripts.util.envia_email import envia_email
 from src.scripts.util.verificadores import verifica_existencia_emails_cadastrados
 from src.scripts.util.dicionario_apelidos import cria_dicionario_apelidos
 
-TOKEN_APELIDOS = str(config('TOKEN_APELIDOS'))
-TOKEN_CENTAVOS = str(config('TOKEN_CENTAVOS'))
+TOKEN_APELIDOS = str(config('TOKEN_APELIDOS', default=None))
+TOKEN_CENTAVOS = str(config('TOKEN_CENTAVOS', default=None))
 
 def inicia_servidor_planilhas(identificador_planilha):
 
@@ -48,8 +48,8 @@ def cria_planilhas():
     envia_email()
 
 def add_email_unico(email, apelido):
-    pagina_centavos = inicia_servidor_planilhas(TOKEN_CENTAVOS)
-    pagina_emails_apelidos = inicia_servidor_planilhas(TOKEN_APELIDOS)
+    _, pagina_centavos = inicia_servidor_planilhas(TOKEN_CENTAVOS)
+    _, pagina_emails_apelidos = inicia_servidor_planilhas(TOKEN_APELIDOS)
 
     add_planilha([apelido], pagina_centavos)
     add_planilha([email, apelido], pagina_emails_apelidos)
