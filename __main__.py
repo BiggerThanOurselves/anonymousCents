@@ -1,3 +1,4 @@
+import sys
 from colorama import (init, Fore, Style)
 from src.scripts.inicia_sistema import inicia_sistema
 from src.scripts.cadastra_email import cadastra_email
@@ -16,19 +17,14 @@ Digite aqui: """
 DICT_OPCOES = {
     '1': inicia_sistema,
     '2': cadastra_email,
-    '3': 'sair'
+    '3': sys.exit
 }
 
 def main():
 
     while(True):
         opcao = seleciona_opcao()
-
-        if opcao == '3':
-            print(Fore.GREEN + '\nAté a próxima!\n')
-            break
-        else:
-            DICT_OPCOES[opcao]()
+        DICT_OPCOES[opcao]()
 
 
 def seleciona_opcao():
@@ -36,9 +32,7 @@ def seleciona_opcao():
     print('--------------------------')
 
     if opcao_selecionada not in DICT_OPCOES.keys():
-        print('--------------------------')
-        print(Fore.RED + 'Selecione uma opção válida')
-        print('--------------------------')
+        print(Fore.RED + '\n>> Selecione uma opção válida <<')
 
         opcao_selecionada = seleciona_opcao()
 
