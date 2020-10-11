@@ -7,6 +7,7 @@ from src.scripts.util.manipular_json import abre_json
 def inicia_sistema():
 
     if os.path.exists('src/data/emails.txt'):
+        salva_tokens()
         cria_planilhas()
         print(Fore.GREEN + '\nPlanilhas criadas e cadastradas!')
 

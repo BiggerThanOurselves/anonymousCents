@@ -16,7 +16,7 @@ def inicia_servidor_planilhas(identificador_planilha):
     sheet_google = server_gc.open_by_key(identificador_planilha)
     pag_planilha = sheet_google.sheet1
     
-    return pag_planilha
+    return (sheet_google, pag_planilha)
 
 def cria_planilhas():
 
@@ -31,14 +31,19 @@ def cria_planilhas():
     lista_emails = [linha.rstrip(' \n') for linha in linhas if linha.rstrip(' \n') != '']
     dict_apelidos = cria_dicionario_apelidos(lista_emails)
 
-    pagina_centavos = inicia_servidor_planilhas(TOKEN_CENTAVOS)
+    planilha_centavos, pagina_centavos = inicia_servidor_planilhas(TOKEN_CENTAVOS)
     pagina_centavos.clear()
-    pagina_emails_apelidos = inicia_servidor_planilhas(TOKEN_APELIDOS)
+    _, pagina_emails_apelidos = inicia_servidor_planilhas(TOKEN_APELIDOS)
     pagina_emails_apelidos.clear()
 
     for email, apelido in dict_apelidos.items():
-        add_planilha([apelido], pagina_centavos)
-        add_planilha([email, apelido], pagina_emails_apelidos)
+        try:
+            planilha_centavos.share(email, perm_type='user', role='reader')
+            add_planilha([apelido], pagina_centavos)
+
+            add_planilha([email, apelido], pagina_emails_apelidos)
+        except:
+            print(Fore.RED + f'\n>> O e-mail {email} foi considerado uma e-mail invalido')
 
     envia_email()
 
