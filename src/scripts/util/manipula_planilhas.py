@@ -9,7 +9,7 @@ from src.scripts.util.dicionario_apelidos import cria_dicionario_apelidos
 
 def inicia_servidor_planilhas(identificador_planilha):
 
-    server_gc = gspread.service_account(filename='credentials.json')
+    server_gc = gspread.service_account(filename='cred.json')
     sheet_google = server_gc.open_by_key(identificador_planilha)
     pag_planilha = sheet_google.sheet1
     
@@ -32,6 +32,8 @@ def cria_planilhas():
     pagina_centavos.clear()
     _, pagina_emails_apelidos = inicia_servidor_planilhas(str(config('TOKEN_APELIDOS')))
     pagina_emails_apelidos.clear()
+
+    print('oi')
 
     for email, apelido in dict_apelidos.items():
         try:
