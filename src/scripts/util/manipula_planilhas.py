@@ -35,7 +35,6 @@ def cria_planilhas():
 
     for email, apelido in dict_apelidos.items():
         try:
-            planilha_centavos.share(email, perm_type='user', role='reader')
             add_planilha([apelido], pagina_centavos)
 
             add_planilha([email, apelido], pagina_emails_apelidos)
