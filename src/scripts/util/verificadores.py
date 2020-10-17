@@ -22,7 +22,7 @@ def verifica_existencia_identificadores():
 def verifica_existencia_emails_cadastrados():
     sobrescrever = True
     if os.path.exists('src/data/dict_emails_apelidos.json'):
-        sobrescrever = str(input('\nJá existem apelidos apelidos e e-mails cadastrados, deseja sobrescreve-los? (S/N) ')).strip()
+        sobrescrever = str(input('\nJá existem apelidos e e-mails cadastrados, deseja sobrescreve-los? (S/N) ')).strip()
 
         if sobrescrever.lower() in DICTO_BOOL:
             sobrescrever = DICTO_BOOL[sobrescrever.lower()]
