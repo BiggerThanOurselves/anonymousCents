@@ -18,62 +18,16 @@ Tendo em vista proteger a privacidade dos alunos as notas (centavos) da discipli
 
 Tendo isso em vista, criamos o **AnonymousCents** que possui as seguintes ***funcionalidades***:
 
- * produz apelidos a partir dos e-mails dos alunos; 
+## ⚙️ Funcionalidades 
+
+ * produz apelidos a partir dos emails dos alunos; 
 
  * envia o apelido automaticamente para o próprio email do aluno;
  
  * gera de forma automática duas planilhas, sendo elas: 
  
-    * uma planilha para o professor com os emails dos alunos e o seu respectivo apelido;
+    * uma planilha de acesso exclusivo apenas para o professor composta pelos emails dos alunos e o seu respectivo apelido;
 
-    * uma segunda planilha (*centavos.xlsx*) sendo esta acessível pelos alunos e contendo todos os apelidos dos alunos e os seus respectivos centavos que serão registrados pelo professor, fazendo com que os problemas previamente citados sejam extintos.
+    * uma segunda planilha (*centavos.xlsx*) sendo esta acessível pelos alunos e contendo todos os apelidos e os seus respectivos centavos que serão registrados pelo professor, fazendo com que os problemas previamente citados sejam extintos.
 
-## :arrow_forward: Como executar o projeto
----
-### :inbox_tray: Pré-requisitos
-1. Python 3 - Acesse esse link para [baixar e instalar o python](https://www.python.org/downloads/);
-2. Pip - Clique nesse link para [baixar e instalar o pip](https://pip.pypa.io/en/stable/installing/);
-3. Openpyxl, uma Biblioteca python para manipular planilhas. pode ser instalado da seguinte forma. Para instalar essa biblioteca execute o seguinte comando no terminal: `$ pip install openpyxl`.
-
-> :warning: caso o comando acima não funcione, tente `pip3 install openpyxl`
-
----
-:pencil: Siga o passo-a-passo a seguir para executar o projeto
-
-
-1. Na pasta ***data*** crie um arquivo `emails.py`:
-
-    ```
-    $ cd data
-    $ touch emails.py
-    ```
-
-2. Abra o arquivo e adicione os e-mails que você deseja que sejam criados apelidos e adicione em uma lista de emails no seguinte formato:
-
-    ```
-    emails = ['email01@gmail.com', 'email02@ccc.ufcg.edu.br', 'email03@computacao.ufcg.edu.br']
-    ```
-
-3. Execute o script `__main__.py`:
-
-    ```
-    $ python3 __main__.py
-    ```
-
-4. Ao executar o script, serão pedidas as seguintes informações: 
-
-    ```
-    $ Informe o e-mail do remetente: 
-   
-    $ Informe a senha de e-mail do remetente:
-    ```
-    
-    > :warning: o cursor estará travado ao receber sua senha, isto ocorrerá para que sua senha não seja exibida. 
-
-   
-    > :warning: A mensagem que será enviada está armazenada na varíavel *mensagem* contida no script `envia_email.py`
-   
-  
- 
-
-5. :heavy_check_mark: Após finalizar estes passos, o seu email será enviado para os emails registrados no arquivo `emails.py`.
+* cadastra um único email, realiza o envio do apelido e faz a adição em ambas planilhas;
