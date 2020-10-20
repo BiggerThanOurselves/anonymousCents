@@ -14,7 +14,7 @@ def envia_email():
 
         email_text = f"""\
 Oi, esse eh o seu apelido na planilha centavos.xlsx {apelido}.
-Link para a planilha: https://docs.google.com/spreadsheets/d/1dBC8d7zBAy0TnL_2PC58DvXK9FKgSE8ljVsiGh-xWKk/edit?usp=sharing\
+Link para a planilha: https://docs.google.com/spreadsheets/d/{str(config('TOKEN_CENTAVOS'))}\
 """
         envia(remetente, senha, destinatario, email_text)
 
@@ -26,7 +26,7 @@ def envia_email_unico(destinatario, apelido):
 
     email_text = f"""\
 Oi, esse eh o seu apelido na planilha centavos.xlsx {apelido}.
-Link para a planilha: https://docs.google.com/spreadsheets/d/1dBC8d7zBAy0TnL_2PC58DvXK9FKgSE8ljVsiGh-xWKk/edit?usp=sharing\
+Link para a planilha: https://docs.google.com/spreadsheets/d/{str(config('TOKEN_CENTAVOS'))}\
 """
     envia(remetente, senha, destinatario, email_text)
 

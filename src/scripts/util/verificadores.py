@@ -7,25 +7,28 @@ DICTO_BOOL = {'s': True, 'n': False}
 
 def verifica_existencia_identificadores():
     sobrescrever = True
-    if os.path.exists('.env') and config('TOKEN_CENTAVOS', default=None) is not None and config('TOKEN_APELIDOS', default=None) is not None:
-        sobrescrever = str(input('\nJá existem idenficadores registrados, deseja sobrescreve-los? (S/N) ')).strip()
 
-        if sobrescrever.lower() in DICTO_BOOL:
-            sobrescrever = DICTO_BOOL[sobrescrever.lower()]
+    if (not os.path.exists('.env')) or config('TOKEN_CENTAVOS', default=None) is None or config('TOKEN_APELIDOS', default=None) is None:
+        return sobrescrever
 
-        else:
-            print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
-            sobrescrever = verifica_existencia_identificadores()
+    sobrescrever = str(input('\nJá existem idenficadores registrados, deseja sobrescreve-los? (S/N) ')).strip().lower()
+
+    if sobrescrever in DICTO_BOOL:
+        sobrescrever = DICTO_BOOL[sobrescrever]
+
+    else:
+        print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
+        sobrescrever = verifica_existencia_identificadores()
 
     return sobrescrever
 
 def verifica_existencia_emails_cadastrados():
     sobrescrever = True
     if os.path.exists('src/data/dict_emails_apelidos.json'):
-        sobrescrever = str(input('\nJá existem apelidos e e-mails cadastrados, deseja sobrescreve-los? (S/N) ')).strip()
+        sobrescrever = str(input('\nJá existem apelidos e e-mails cadastrados, deseja sobrescreve-los? (S/N) ')).strip().lower()
 
-        if sobrescrever.lower() in DICTO_BOOL:
-            sobrescrever = DICTO_BOOL[sobrescrever.lower()]
+        if sobrescrever in DICTO_BOOL:
+            sobrescrever = DICTO_BOOL[sobrescrever]
 
         else:
             print(Fore.YELLOW + '\n>> Você deve selecionar as opções "S" ou "N"')
