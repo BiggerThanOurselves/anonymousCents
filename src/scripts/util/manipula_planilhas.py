@@ -12,8 +12,9 @@ def inicia_servidor_planilhas(identificador_planilha):
     server_gc = gspread.service_account(filename='credentials.json')
     sheet_google = server_gc.open_by_key(identificador_planilha)
     pag_planilha = sheet_google.sheet1
+    pag_planilha.clear()
     
-    return (sheet_google, pag_planilha)
+    return pag_planilha
 
 def cria_planilhas():
 
@@ -28,15 +29,12 @@ def cria_planilhas():
     lista_emails = [linha.rstrip(' \n') for linha in linhas if linha.rstrip(' \n') != '']
     dict_apelidos = cria_dicionario_apelidos(lista_emails)
 
-    planilha_centavos, pagina_centavos = inicia_servidor_planilhas(str(config('TOKEN_CENTAVOS')))
-    pagina_centavos.clear()
-    _, pagina_emails_apelidos = inicia_servidor_planilhas(str(config('TOKEN_APELIDOS')))
-    pagina_emails_apelidos.clear()
+    pagina_centavos = inicia_servidor_planilhas(str(config('TOKEN_CENTAVOS')))
+    pagina_emails_apelidos = inicia_servidor_planilhas(str(config('TOKEN_APELIDOS')))
 
     for email, apelido in dict_apelidos.items():
         try:
             add_planilha([apelido], pagina_centavos)
-
             add_planilha([email, apelido], pagina_emails_apelidos)
         except:
             print(Fore.RED + f'\n>> O e-mail {email} foi considerado uma e-mail invalido')
@@ -44,8 +42,8 @@ def cria_planilhas():
     envia_email()
 
 def add_email_unico(email, apelido):
-    _, pagina_centavos = inicia_servidor_planilhas(str(config('TOKEN_CENTAVOS')))
-    _, pagina_emails_apelidos = inicia_servidor_planilhas(str(config('TOKEN_APELIDOS')))
+    pagina_centavos = inicia_servidor_planilhas(str(config('TOKEN_CENTAVOS')))
+    pagina_emails_apelidos = inicia_servidor_planilhas(str(config('TOKEN_APELIDOS')))
 
     add_planilha([apelido], pagina_centavos)
     add_planilha([email, apelido], pagina_emails_apelidos)
